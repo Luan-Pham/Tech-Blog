@@ -2,11 +2,11 @@ const router = require('express').Router();
 const { Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/:id', async (req, res) => {
+router.get('/:blogId', async (req, res) => {
   try {
     const comments = await Comment.findAll({
       where: {
-        post_id: req.params.postid,
+        blog_id: req.params.blogid,
       },
     });
     console.log('params:', req.params);
@@ -20,11 +20,12 @@ router.get('/:id', async (req, res) => {
   }
 });
 
-router.post('/:postId', withAuth, async (req, res) => {
+router.post('/:blogId', withAuth, async (req, res) => {
   try {
+    console.log('posting comment');
     const newComment = await Comment.create({
       user_id: req.session.user_id,
-      post_id: req.session.postId,
+      blog_id: req.session.blogId,
       content: req.body.commentContent,
     });
     res.status(200).json(newComment);
