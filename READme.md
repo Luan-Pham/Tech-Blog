@@ -15,6 +15,8 @@ This is a tech blog website where users can post, view and comment on other blog
   ## Usage
 
   Visit the deployed webpage to use the application.
+  
+  <a href="https://luan-tech-blog.herokuapp.com/"> Link to website!</a>
 
   ## License
 
